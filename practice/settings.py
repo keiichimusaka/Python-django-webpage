@@ -25,11 +25,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-*%*k0^*)ru$250r@u7*fzy-8+4-zd*zj__xz#(ols5hu+x1&c%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # →本番環境ではfalseにする。エラーが出た際に、色々表示されていしまう
 
-ALLOWED_HOSTS = ["52.194.68.1"]
+ALLOWED_HOSTS = ["52.194.68.1","127.0.0.1"]
 # →外部サーバでゆるすもの
 
 STATIC_ROOT = '/home/ubuntu/mysite/static'
@@ -96,8 +96,16 @@ WSGI_APPLICATION = 'practice.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': "dbmaster",
+        'USER': "dbmasteruser",
+        'PASSWORD': "Ny>vWz,(Sg,JSLX1=oF.|:>gRTz_mF24",
+        'HOST': "ls-ecaecf9be3a421694c9409c54be022cce3db1be8.cuj2dsctfctf.ap-northeast-1.rds.amazonaws.com",
+        'PORT': "3306",
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+            'charset': 'utf8mb4'
+        },
     }
 }
 
